@@ -1,0 +1,30 @@
+[?25l[?7l[0m[31m[1m
+      `-/+++++++++++++++++/-.`
+   `/syyyyyyyyyyyyyyyyyyyyyyys/.
+  :yyyyo/-...............-/oyyyy/
+ /yyys-                     .oyyy+
+.yyyy`                       `syyy-
+:yyyo                         /yyy/
+.yyyy`                       `syyy-
+ /yyys.                     .oyyyo
+  /yyyyo:-...............-:oyyyy/`
+   `/syyyyyyyyyyyyyyyyyyyyyyys+.
+     `.:/+ooooooooooooooo+/:.`[0m
+[12A[9999999D[38C[0m[1m[31m[1mroot[0m@[31m[1molc1.vos.qy.local[0m 
+[38C[0m----------------------[0m 
+[38C[0m[31m[1mOS[0m[0m:[0m Oracle Linux Server 9.2 x86_64[0m 
+[38C[0m[31m[1mHost[0m[0m:[0m VMware7,1 None[0m 
+[38C[0m[31m[1mKernel[0m[0m:[0m 5.15.0-106.131.4.el9uek.x86_64[0m 
+[38C[0m[31m[1mUptime[0m[0m:[0m 18 days, 19 hours, 49 mins[0m 
+[38C[0m[31m[1mPackages[0m[0m:[0m 772 (rpm)[0m 
+[38C[0m[31m[1mShell[0m[0m:[0m bash 5.1.8[0m 
+[38C[0m[31m[1mResolution[0m[0m:[0m 1024x768[0m 
+[38C[0m[31m[1mCPU[0m[0m:[0m Intel Xeon E5-4620 v3 (4) @ 1.997GHz[0m 
+[38C[0m[31m[1mGPU[0m[0m:[0m 00:0f.0 VMware SVGA II Adapter[0m 
+[38C[0m[31m[1mMemory[0m[0m:[0m 335MiB / 3447MiB[0m 
+
+[38C[30m[40m   [31m[41m   [32m[42m   [33m[43m   [34m[44m   [35m[45m   [36m[46m   [37m[47m   [m
+[38C[38;5;8m[48;5;8m   [38;5;9m[48;5;9m   [38;5;10m[48;5;10m   [38;5;11m[48;5;11m   [38;5;12m[48;5;12m   [38;5;13m[48;5;13m   [38;5;14m[48;5;14m   [38;5;15m[48;5;15m   [m
+
+
+[?25h[?7h

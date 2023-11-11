@@ -1,0 +1,68 @@
+[self]
+localhost  ansible_connection=local
+
+[mynx]
+nx137 ansible_host=10.2.29.137
+nx138 ansible_host=10.2.29.138
+
+[win]
+w2k19 ansible_host=10.0.9.60
+opmt  ansible_host=10.20.18.200
+
+[ubuntu]
+ub22 ansible_host=10.30.18.122
+u22c1 ansible_host=10.30.16.234
+u22c2 ansible_host=10.30.16.235
+
+[ol9]
+olc1 ansible_host=10.30.16.231
+
+[ol7]
+ol7db ansible_host=10.30.18.123
+ypwls3 ansible_host=10.2.19.233
+
+[kali]
+kl2023 ansible_host=10.30.16.233
+
+[router]
+r1 ansible_host=10.30.16.61
+r2 ansible_host=10.30.16.62
+r3 ansible_host=10.30.16.63
+r4 ansible_host=10.30.16.64
+
+[switch]
+sw1 ansible_host=10.30.16.51
+sw2 ansible_host=10.30.16.52
+
+[ios_device:children]
+router
+switch
+
+[ios_device:vars]
+ansible_network_os=ios
+ansible_user='admin'
+ansible_password='Cisco365'
+ansible_connection=network_cli
+
+[everyone:children]
+self
+mynx
+win
+ubuntu
+ol9
+
+[demo:children]
+ubuntu
+ol9
+
+[demo:vars]
+ansible_ssh_private_key_file=/home/devops/.ssh/id_ed25519
+ansible_user=devops
+
+[mynx:vars]
+ansible_ssh_private_key_file=/home/devops/.ssh/id_ed25519
+ansible_user=devops
+
+[winsvars]
+ansible_connection=winrm
+
