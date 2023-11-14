@@ -1,0 +1,17 @@
+---
+- hosts: olc1
+  become: true
+  gather_facts: false
+  collections:
+  - ansible.builtin
+  tasks:
+  - name: Install unzip
+    package:
+      name: unzip # Install unzip on olc1
+  - name: Install Terraform
+    unarchive:
+      src: https://releases.hashicorp.com/terraform/1.6.3/terraform_1.6.3_linux_amd64.zip
+      dest: /usr/local/bin # File destination directory
+      remote_src: yes # Tell Ansible that this is a remote source
+      owner: root
+      group: root

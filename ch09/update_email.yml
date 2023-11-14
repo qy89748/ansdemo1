@@ -1,0 +1,20 @@
+---
+- hosts: ol9 # Run only on hosts in the ol9 group
+  become: true # Run tasks with privilege escalation to become root
+  collections:
+  - ansible.builtin
+  tasks:
+  - name: change the e-mail address for httpd admin # Task name
+    tags: apache,ol9,httpd # Tags for task
+    lineinfile:
+      path: /etc/httpd/conf/httpd.conf # Path of file to update
+      regexp: '^ServerAdmin' # Regular expression to locate line beginning with "ServerAdmin"
+      line: ServerAdmin jdoe@ansnetauto.com # Replacing line
+    when: ansible_distribution == "OracleLinux" # Only run this task if the OS is oracle linux
+    register: httpd # Register this task's result as "httpd"
+  - name: restart httpd for ol9 # Task name
+    tags: apache,ol9,httpd # Tags for task
+    service:
+      name: httpd # Name of the service to restart
+      state: restarted # Restart the service
+    when: httpd.changed # Only run this task if the "httpd" task changed the file

@@ -1,0 +1,61 @@
+---
+- hosts: linux # Set hosts to target and become the root user
+  become: true
+  collections:
+    - ansible.builtin
+
+  tasks:
+  - name: install updates (Ubuntu)
+    tags: always
+    apt:
+      upgrade: dist # Upgrade all packages to the latest version
+      update_cache: yes # Update the local package cache
+    when: ansible_distribution == "Ubuntu" # Only run on Ubuntu
+
+  - name: install updates (OracleLinux)
+    tags: always
+    dnf:
+      update_only: yes # Only update packages, don't install new ones
+      update_cache: yes # Update the local package cache
+    when: ansible_distribution == "OracleLinux" # Only run on OracleLinux
+
+- hosts: demo # Set hosts to target and become the root user
+  become: true
+
+  tasks:
+  - name: install apache2 & PHP packages for Ubuntu
+    tags: ubuntu,apache # Add tags for easy identification
+    apt:
+      name:
+        - apache2
+        - libapache2-mod-php # Install Apache2 and PHP packages
+      state: latest # Install the latest available version
+    when: ansible_distribution == "Ubuntu" # Only run on Ubuntu
+
+  - name: install httpd & php packages for OracleLinux/CentOS
+    tags: OracleLinux,httpd # Add tags for easy identification
+    dnf:
+      name:
+        - httpd
+        - php # Install HTTPD and PHP packages
+      state: latest # Install the latest available version
+    when: ansible_distribution == "OracleLinux" # Only run on OracleLinux
+
+  - name: copy default html file to web servers
+    tags: apache,httpd
+    copy:
+      src: default_site.html # Ansible assumes source files are under the "files" directory
+      dest: /var/www/html/index.html # The file name does not have to be the same
+      owner: root # owner
+      group: root # group
+      mode: 0644 # permission
+
+- hosts: ol9 # target only fedora for this play
+  become: true # run as the root user
+  gather_facts: false # disable gather_facts to save time
+
+  tasks:
+  - name: Restart web services
+    service: # use Ansible service module
+      name: httpd # target service to restart
+      state: restarted # restart the service

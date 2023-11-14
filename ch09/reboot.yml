@@ -1,0 +1,12 @@
+---
+- hosts: olc1 # target host group named fedora
+  become: yes # run the playbook with superuser privileges
+  gather_facts: false
+  collections:
+  - ansible.builtin
+  tasks:
+  - name: Reboot Fedora server
+    reboot: # The Ansible module
+      reboot_timeout: 600 # The time in seconds to wait for the system to reboot
+      test_command: uptime # test whether the system has rebooted successfully
+      connect_timeout: 60 # The timeout for establishing the SSH connection to client nodes
